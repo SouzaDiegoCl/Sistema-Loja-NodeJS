@@ -1,0 +1,80 @@
+* {
+    margin: 0px;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+#mainCardWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#pedidosContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    padding-inline: 20px;
+
+}
+
+#pedidosCardWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+#produtosContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-inline: 20px;
+}
+
+#clientesContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-inline: 20px;
+}
+
+.pageTitle {
+    margin-top: 15px;
+    align-self: center;
+}
+
+@media (max-width: 1000px) {
+    #mainCardWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #pedidosCardWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

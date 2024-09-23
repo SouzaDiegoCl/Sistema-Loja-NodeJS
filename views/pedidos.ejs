@@ -1,0 +1,20 @@
+<%- include ('partials/header.ejs') %>
+    <div id="pedidosContainer">
+        <h1 class="pageTitle">PEDIDOS</h1>
+        <div id="pedidosCardWrapper">
+            <% pedidosLista.forEach(pedido=> { %>
+                <div class="card" style="">
+                    <div class="card-body" style="display: flex; flex-direction: column; justify-content: baseline;">
+                        <p class="card-text">
+                            <%= pedido.numPedido %><br>
+                                <hr>
+                        </p>
+                        <p class="card-text">
+                            R$<%= pedido.valor.toFixed(2) %>
+                        </p>                       
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+    <%- include ('partials/footer.ejs') %>

@@ -1,0 +1,58 @@
+<%- include ('partials/header.ejs') %>
+    <div id="produtosContainer">
+        <h1 class="pageTitle">PRODUTOS</h1>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered  table-hover">
+                <thead class="thead-light ">
+                    <tr>
+                        <th class="text-center"></th>
+                        <th class="text-center">Nome do Produto</th>
+                        <th class="text-center">Preço</th>
+                        <th class="text-center">Categoria</th>
+                        <th class="text-center text-success">EDITAR</th>
+                        <th class="text-center text-danger">EXCLUIR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% produtosLista.forEach(produto=> { %>
+                        <tr>
+                            <td style="text-align: center;">
+                                <% if (produto.categoria=="Escolar" ) { %>
+                                    <img src="/imgs/produto_categoria_icon.png" alt="User Icon" width="50px"
+                                        height="50px">
+                                    <% } else if(produto.categoria=="Escritório" ) { %>
+                                        <img src="/imgs/produto_categoria_office_icon.png" alt="User Icon" width="50px"
+                                            height="50px">
+                                        <% } %>
+                            </td>
+                            <td>
+                                <%= produto.nomeProduto %>
+                            </td>
+                            <td class="text-center">
+                                <%= (produto.preco).toFixed(2) %>
+                            </td>
+                            <td>
+                                <%= produto.categoria %>
+                            </td>
+                            <td class="text-center">
+                                <a name="editarBtn" id="" onclick="editarFunc()" class="btn btn-success" href="#"
+                                    role="button">EDITAR</a>
+                            <td class="text-center">
+                                <a name="excluirBtn" id="" onclick="excluirFunc()" class="btn btn-danger" href="#"
+                                    role="button">EXCLUIR</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+                <tfoot class="text-center">
+                    <tr>
+                        <td colspan="6">
+                            <a name="excluirBtn" id="" onclick="adicionarFunc()" class="btn btn-primary" href="#"
+                                role="button">ADICIONAR PRODUTO</a>
+                    </tr>
+                    </td>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <%- include ('partials/footer.ejs') %>
