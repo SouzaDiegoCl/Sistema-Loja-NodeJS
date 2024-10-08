@@ -8,6 +8,7 @@ const Produto = connection.define("produtos", {
   nomeProduto: {
     type: Sequelize.STRING,
     allowNull: false,
+    defaultValue: 'Nome Não Cadastrado',   
   },
   preco: {
     type: Sequelize.DOUBLE,
@@ -16,6 +17,7 @@ const Produto = connection.define("produtos", {
   categoria: {
     type: Sequelize.STRING,
     allowNull: false,
+    defaultValue: 'Categoria não Cadastrado'
   },
 });
 Produto.sync({ force: false });

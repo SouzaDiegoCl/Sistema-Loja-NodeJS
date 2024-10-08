@@ -1,35 +1,94 @@
 <%- include ('partials/header.ejs') %>
-    <div id="clientesContainer">
-        <h1 class="pageTitle">CLIENTES</h1>
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered  table-hover">
-                <thead class="thead-light ">
-                    <tr>
-                        <th></th>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Endereço</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% clientesLista.forEach(cliente=> { %>
-                        <tr>
-                            <td style="text-align: center;">
-                                <img src="/imgs/icon_user.png" alt="User Icon" width="25px" height="25px">
-                            </td>
-                            <td>
-                                <%= cliente.nome %>
-                            </td>
-                            <td>
-                                <%= cliente.cpf %>
-                            </td>
-                            <td>
-                                <%= cliente.endereco %>
-                            </td>
-                        </tr>
-                        <% }) %>
-                </tbody>
-            </table>
+<div id="clientesContainer">
+  <h1 class="pageTitle">CLIENTES</h1>
+  <form action="/clientes/new" method="POST">
+    <div class="row">
+      <div class="col-10">
+        <label>Nome do Cliente</label>
+        <input
+          type="text"
+          name="nome"
+          id="nomeInput"
+          placeholder="Nome do Cliente:"
+          class="form-control"
+        />
+        <label>CPF do Cliente</label>
+        <input
+          type="text"
+          name="cpf"
+          id="cpfInput"
+          placeholder="CPF do Cliente:"
+          class="form-control"
+        />
+        <label>Endereço do Cliente</label>
+        <input
+          type="text"
+          name="endereco"
+          id="enderecoInput"
+          placeholder="Endereço do Cliente:"
+          class="form-control"
+        />
+      </div>
+      <div class="col-2 d-flex justify-content-center align-items-center">
+        <div class="row-2">
+          <input type="submit" href="" class="btn btn-success" value="Adicionar Novo"></input>
         </div>
+      </div>
     </div>
-    <%- include ('partials/footer.ejs') %>
+  </form>
+
+  <div class="table-responsive mt-5">
+    <table class="table table-striped table-bordered table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th></th>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Endereço</th>
+          <th class="text-center text-success">EDITAR</th>
+          <th class="text-center text-danger">EXCLUIR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% clientesLista.forEach(cliente=> { %>
+        <tr>
+          <td style="text-align: center">
+            <img
+              src="/imgs/icon_user.png"
+              alt="User Icon"
+              width="25px"
+              height="25px"
+            />
+          </td>
+          <td><%= cliente.nome %></td>
+          <td><%= cliente.cpf %></td>
+          <td><%= cliente.endereco %></td>
+          <td class="text-center">
+            <a
+              name="editarBtn"
+              id=""
+              class="btn btn-success"
+              href="/clientes/edit/<%= cliente.id %>"
+              role="button"
+              >EDITAR</a
+            >
+          </td>
+
+          <td class="text-center">
+            <a
+              name="excluirBtn"
+              id=""
+              onclick="return confirm('Deseja realmente deletar o produto <%= cliente.nome %>')"
+              class="btn btn-danger"
+              href="/clientes/delete/<%= cliente.id %>"
+              role="button"
+              >EXCLUIR</a
+            >
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include ('partials/footer.ejs') %>

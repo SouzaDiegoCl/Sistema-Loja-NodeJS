@@ -36,4 +36,57 @@ router.post("/produtos/new", (req, res) => {
     });
 });
 
+//Delete
+router.get("/produtos/delete/:id", (req, res) => {
+  const id = req.params.id;
+  Produto.destroy({
+    where: {
+      id: id,
+    },
+  })
+    .then(() => {
+      res.redirect("/produtos");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+//Editar
+router.get("/produtos/edit/:id", (req, res) => {
+  const id = req.params.id;
+  Produto.findByPk(id)
+    .then((produto) => {
+      res.render("produtosEdit", {
+        produto: produto,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+//Update
+router.post("/produtos/update", (req, res) => {
+  const id = req.body.id;
+  const nome = req.body.nome;
+  const preco = req.body.preco;
+  const categoria = req.body.categoria;
+
+  Produto.update(
+    {
+      nomeProduto: nome,
+      preco: preco,
+      categoria: categoria,
+    },
+    { where: { id: id } }
+  )
+    .then(() => {
+      res.redirect("/produtos");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 export default router;

@@ -51,7 +51,7 @@ app.listen(port, (error) => {
   if (error) {
     console.log(`Ocorreu um erro: ${error}`);
   } else {
-    console.log(`Servidor iniciado com sucesso: http://localhost:${port}}`);
+    console.log(`Servidor iniciado com sucesso: http://localhost:${port}`);
   }
 });
 
