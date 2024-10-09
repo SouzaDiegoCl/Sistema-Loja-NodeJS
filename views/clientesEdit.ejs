@@ -1,43 +1,28 @@
 <%- include ('partials/header.ejs') %>
-<div id="clientesContainer">
-  <h1 class="pageTitle">CLIENTES - EDITAR</h1>
-  <form action="/clientes/update" method="post">
-    <div class="row">
-      <div class="rpw">
-        <label>Nome do Cliente</label>
-        <input
-          type="text"
-          name="nome"
-          id="nomeInput"
-          placeholder="Nome do Cliente:"
-          class="form-control"
-          value="<%= cliente.nome %>"
-        />
-        <label>CPF do Cliente</label>
-        <input
-          type="text"
-          name="cpf"
-          id="cpfInput"
-          placeholder="CPF do Cliente:"
-          class="form-control"
-          value="<%= cliente.cpf %>"
-        />
-        <label>Endereço do Cliente</label>
-        <input
-          type="text"
-          name="endereco"
-          id="enderecoInput"
-          placeholder="Endereço do Cliente:"
-          class="form-control"
-          value="<%= cliente.endereco %>"
-        />
-      </div>
-      <div class="row d-flex justify-content-center mt-5">
-        <div class="col-2">
-          <input type="submit" href="" class="btn btn-success" value="Editar Cliente"></input>
+  <div id="clientesContainer">
+    <h1 class="pageTitle">CLIENTES - EDITAR</h1>
+    <div class="container">
+      <form action="/clientes/update" method="post">
+        <div class="row">
+          <div class="row">
+            <input type="hidden" name="id" value="<%= cliente.id%>">
+            <label>Nome do Cliente</label>
+            <input type="text" name="nome" id="nomeInput" placeholder="Nome do Cliente:" class="form-control"
+              value="<%= cliente.nome %>" />
+            <label>CPF do Cliente</label>
+            <input type="text" name="cpf" id="cpfInput" placeholder="CPF do Cliente:" class="form-control"
+              value="<%= cliente.cpf %>" />
+            <label>Endereço do Cliente</label>
+            <input type="text" name="endereco" id="enderecoInput" placeholder="Endereço do Cliente:"
+              class="form-control" value="<%= cliente.endereco %>" />
+          </div>
+          <div class="row d-flex justify-content-center mt-5">
+            <div class="col-2">
+              <input class="btn btn-success" type="submit" value="Editar Cliente">
+            </div>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
-  </form>
-</div>
-<%- include ('partials/footer.ejs') %>
+  </div>
+  <%- include ('partials/footer.ejs') %>

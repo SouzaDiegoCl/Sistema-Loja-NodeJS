@@ -64,9 +64,9 @@ router.post("/clientes/update", (req, res) => {
   const id = req.body.id;
   const nome = req.body.nome;
   const cpf = req.body.cpf;
-  const cendereco = req.body.endereco;
+  const endereco = req.body.endereco;
 
-  Produto.update(
+  Cliente.update(
     {
       nome: nome,
       cpf: cpf,

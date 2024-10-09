@@ -1,17 +1,42 @@
 <%- include ('partials/header.ejs') %>
     <div id="pedidosContainer">
         <h1 class="pageTitle">PEDIDOS</h1>
-        <div id="pedidosCardWrapper">
+        <div class="container">
+            <form action="/pedidos/new" method="post">
+                <div class="d-flex  flex-column  align-items-center gap-5 mt-5 me-5 shadow p-5 rounded-5">
+                    <div>
+                        <label>Digite o número do pedido:</label>
+                        <input type="text" name="numPedido" id="inputNum" placeholder="Número do Pedido"
+                            class="form-control-sm border-1">
+                    </div>
+                    <div>
+                        <label>Digite o preço do pedido:</label>
+                        <input type="text" name="valor" id="inputPreco" placeholder="Preço do Pedido"
+                            class="form-control-sm border-1">
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="Novo Pedido" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="pedidosCardWrapper" class="container shadow mt-5 p-5 rounded-5">
             <% pedidosLista.forEach(pedido=> { %>
-                <div class="card" style="">
+                <div class="card">
                     <div class="card-body" style="display: flex; flex-direction: column; justify-content: baseline;">
                         <p class="card-text">
                             <%= pedido.numPedido %><br>
-                                <hr>
+                            <hr>
                         </p>
                         <p class="card-text">
-                            R$<%= pedido.valor.toFixed(2) %>
-                        </p>                       
+                            R$<%= pedido.valor %>
+                        </p>
+                        <p class="card-text">
+                            <a href="/pedido/edit/<%= pedido.id %>" class="btn btn-primary">Editar</a>
+                        </p>
+                        <p class="card-text">
+                            <a href="/pedido/delete/<%= pedido.id %>" class="btn btn-danger">Excluir</a>
+                        </p>
                     </div>
                 </div>
                 <% }) %>

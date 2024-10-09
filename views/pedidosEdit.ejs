@@ -1,0 +1,25 @@
+<%- include ('partials/header.ejs') %>
+  <div id="clientesContainer">
+    <h1 class="pageTitle">PEDIDOS - EDITAR</h1>
+    <div class="container">
+      <form action="/pedido/update" method="post">
+        <div class="row">
+          <div class="row">          
+            <input type="hidden" name="id" value="<%= pedido.id%>">            
+            <label>Número do Pedido: </label>
+            <input type="text" name="numPedido" id="pedidoNumInput" placeholder="Número do Pedido:" class="form-control"
+              value="<%= pedido.numPedido %>" />
+            <label>Valor do Pedido</label>
+            <input type="text" name="valor" placeholder="Valor do Pedido:"
+              class="form-control" value="<%= pedido.valor %>" />
+          </div>
+          <div class="row d-flex justify-content-center mt-5">
+            <div class="col-2">
+              <input class="btn btn-success" type="submit" value="Editar Cliente">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <%- include ('partials/footer.ejs') %>
