@@ -3,9 +3,26 @@ import connection from "./config/sequelize-config.js";
 import ClientesController from "./controllers/ClientesController.js";
 import ProdutosController from "./controllers/ProdutosController.js";
 import PedidosController from "./controllers/PedidosController.js";
-
+import UserController from "./controllers/UserController.js";
 //inicializar express
 const app = express();
+
+//Flash
+import flash from "express-flash";
+app.use(flash());
+
+//Importando o gerador de sessoes do express
+import session from "express-session";
+
+//Configurando o express-session
+app.use(
+  session({
+    secret: "lojasecret", //Segredo que acompanha sessão
+    cookie: { maxAge: 3600000 }, //Tempo para sessão expirar  = 1 hora
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 //Pegar dados de formulários
 app.use(express.urlencoded({ extended: false }));
@@ -44,6 +61,7 @@ app.get("/", (req, res) => {
 app.use("/", ClientesController);
 app.use("/", ProdutosController);
 app.use("/", PedidosController);
+app.use("/", UserController);
 
 //Iniciando server
 const port = 8080;

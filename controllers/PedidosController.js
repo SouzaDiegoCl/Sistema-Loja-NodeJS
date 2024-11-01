@@ -2,7 +2,9 @@ import express from "express";
 import Pedido from "../models/Pedido.js";
 const router = express.Router();
 
-router.get("/pedidos", (req, res) => {
+import Auth from "../middleware/Auth.js";
+
+router.get("/pedidos", Auth, (req, res) => {
   Pedido.findAll().then((pedidos) => {
     res.render("pedidos", {
       pedidosLista: pedidos,

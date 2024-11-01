@@ -1,10 +1,11 @@
 import express from "express";
 const router = express.Router();
 
+import Auth from "../middleware/Auth.js";
 import Produto from "../models/Produto.js";
 
 //Get
-router.get("/produtos", function (req, res) {
+router.get("/produtos", Auth, (req, res) => {
   Produto.findAll().then((produtos) => {
     res.render("produtos", {
       produtosLista: produtos,

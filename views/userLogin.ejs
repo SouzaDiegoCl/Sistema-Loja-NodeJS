@@ -1,0 +1,26 @@
+<%- include ('partials/header.ejs') %>
+    <div id="produtosContainer">
+        <h1 class="pageTitle">Login de Usuário</h1>
+        <div class="table-responsive">
+            <div class="container">
+                <form action="/authenticate" method="post">
+                    <div class="row">
+                        <div class="row">
+                            <label>Email</label>
+                            <input type="email" name="email" id="emailInput" placeholder="Email do Usuário:" class="form-control" required />
+                            <label>Senha</label>
+                            <input type="password" name="senha" id="senhaInput" placeholder="Senha do Usuário:"
+                                class="form-control" required />
+                        </div>
+                        <div class="row d-flex justify-content-center mt-5">
+                            <div class="col-2">
+                                <input class="btn btn-primary" type="submit" value="Login">
+                            </div>
+                        </div>
+                    </div>
+                    <h6>Já possui conta? <a href="/cadastro">Faça o Cadastro!</a></h6>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include ('partials/footer.ejs') %>

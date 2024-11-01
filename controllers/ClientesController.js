@@ -2,8 +2,10 @@ import express from "express";
 import Cliente from "../models/Cliente.js";
 const router = express.Router();
 
+import Auth from "../middleware/Auth.js";
+
 //Rota Clientes
-router.get("/clientes", (req, res) => {
+router.get("/clientes", Auth, (req, res) => {
   Cliente.findAll().then((clientesLista) => {
     res.render("clientes", {
       clientesLista: clientesLista,
@@ -60,7 +62,7 @@ router.get("/clientes/edit/:id", (req, res) => {
 });
 
 //Update Cliente
-router.post("/clientes/update", (req, res) => {
+router.post("/clientes/update",(req, res) => {
   const id = req.body.id;
   const nome = req.body.nome;
   const cpf = req.body.cpf;
