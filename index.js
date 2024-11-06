@@ -11,6 +11,10 @@ const app = express();
 import flash from "express-flash";
 app.use(flash());
 
+
+
+//Importando o Middleware Auth
+import Auth from "./middleware/Auth.js";
 //Importando o gerador de sessoes do express
 import session from "express-session";
 
@@ -49,19 +53,19 @@ connection
 
 // Define o EJS como Renderizador de páginas
 app.set("view engine", "ejs");
-
 // Define o uso da pasta "public" para uso de arquivos estáticos
 app.use(express.static("public"));
-
-//Rota principal
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 app.use("/", ClientesController);
 app.use("/", ProdutosController);
 app.use("/", PedidosController);
 app.use("/", UserController);
+
+//Rota principal
+app.get("/", Auth, (req, res) => {
+  res.render("index");
+});
+
 
 //Iniciando server
 const port = 8080;

@@ -1,33 +1,43 @@
 <nav class="navbar navbar-expand-lg bg-success">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">PaperStore</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">      
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/produtos">Produtos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/pedidos">Pedidos</a>
-                </li>   
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/clientes">Clientes</a>
-                </li>   
-               
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Dropdown
                     </a>
-                    <ul class="dropdown-menu">                                            
+                    <ul class="dropdown-menu">
                         <li><a class="dropdown-item" onclick="alertaFunction()">Sor Diego é TOP</a></li>
                     </ul>
-                </li>             
-            </ul>        
+                </li>
+            </ul>
+            <span style="margin-left: auto;">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <% if( typeof loggedOut==="undefined" ){ %>
+                            <a href="/logout" class="nav-link">Fazer Logout</a>
+                            <% } else { %>
+                                <a href="/login" class="nav-link">Fazer Login</a>
+                                <% } %>
+                    </li>
+                </ul>
+            </span>
         </div>
     </div>
 </nav>

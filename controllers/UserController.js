@@ -4,7 +4,10 @@ import bcrypt from "bcrypt";
 import Usuario from "../models/User.js";
 
 router.get("/login", (req, res) => {
-  res.render("userLogin");
+  res.render("userLogin", {
+    loggedOut: true,
+    messages: req.flash()
+  });
 });
 
 // ROTA DE CADASTRO
